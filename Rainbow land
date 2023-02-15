@@ -1,0 +1,110 @@
+var b = createSprite(200, 200);
+b.setAnimation("background 2");
+
+var unicat = createSprite(200,345,180,330);
+unicat.setAnimation("unicat_2");
+unicat.scale=0.2;
+
+var crystal1 = createSprite(100,250,200,200);
+crystal1.setAnimation("purpleburst_1");
+crystal1.scale=0.2;
+
+var crystal2 = createSprite(300,150,200,200);
+crystal2.setAnimation("purpleburst_1");
+crystal2.scale=0.2;
+
+var crystal3 = createSprite(100,50,200,200);
+crystal3.setAnimation("purpleburst_1");
+crystal3.scale=0.2;
+
+var Fline = createSprite(200,5,200,10);
+Fline.setAnimation("ground_cake_1");
+Fline.scale=0.2;
+
+var goal =0;
+var death = 0;
+
+crystal1.setVelocity(-10,0);
+crystal2.setVelocity(10,0);
+crystal3.setVelocity(-10,0);
+
+playSound("Video-Game.mp3", true);
+
+
+function draw() {
+  
+//background(b);
+
+  
+createEdgeSprites();
+
+crystal1.bounceOff(edges);
+crystal2.bounceOff(edges);
+crystal3.bounceOff(edges);
+
+
+if(keyDown(UP_ARROW)){
+ unicat.y=unicat.y-2
+}
+
+if(keyDown(DOWN_ARROW)){
+ unicat.y=unicat.y+2
+}
+
+if(keyDown(LEFT_ARROW)){
+  unicat.x=unicat.x-2
+}
+
+if(keyDown(RIGHT_ARROW)){
+  unicat.x=unicat.x+2
+}
+
+if(unicat.isTouching(crystal1)|| unicat.isTouching(crystal2)|| unicat.isTouching(crystal3)){
+  playSound("sound://category_achievements/bubbly_game_achievement_sound.mp3", false);
+  unicat.x=200
+  unicat.y=350
+  death = death+1
+}
+if(unicat.isTouching(Fline)){
+  playSound("sound://category_achievements/vibrant_game_game_gold_tresure_chest_open.mp3", false);
+  unicat.x=200
+  unicat.y=345
+  goal=goal+1
+}
+
+
+
+
+
+
+drawSprites();  
+}
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
